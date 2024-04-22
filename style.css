@@ -1,0 +1,151 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+body {
+    background-color: #1D1E22;
+    color: white;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+input:focus {
+    outline: none;
+}
+
+header h1 {
+    text-align: center;
+    padding: 20px
+}
+
+#serch {
+    position: relative;
+    width: 500px;
+    margin: 0 auto;
+    margin-bottom: 20px;
+}
+
+#serch #search-input {
+    width: 100%;
+    height: 40px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 30px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.submit-btn {
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    background-image: url('https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 30px;
+    border: none;
+    background-color: transparent;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+#serch input:hover {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#input-clear-btn {
+    position: absolute;
+    border: none;
+    top: 1px;
+    right: 65px;
+    padding: 10px;
+    background-color: transparent;
+    cursor: pointer;
+    color: rgba(0, 0, 0, 0.397);
+}
+
+#input-clear-btn:hover {
+    color: #1D1E22;
+    transform: scale(1.2);
+    transition-duration: 0.5s;
+}
+
+/* 영화 목록 */
+
+#movie-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    justify-items: center;
+}
+
+.movie-card {
+    position: relative;
+    width: 20em;
+    padding: 10px;
+    height: 700px;
+    background-color: #222A44;
+    border-radius: 16px;
+    margin-top: 30px;
+    margin-bottom: 40px;
+    cursor: pointer;
+    transition: all 0.1s;
+}
+
+.movie-card img {
+    width: 100%;
+
+    border-radius: 16px;
+    border: 1px solid #ccc;
+}
+
+.movie-content {
+    overflow-y: auto;
+    height: 150px;
+}
+
+/* 스크롤바 막대 */
+
+.movie-content::-webkit-scrollbar {
+    width: 8px;
+    /* 스크롤바의 너비 */
+}
+
+.movie-content::-webkit-scrollbar-thumb {
+    height: 30%;
+    /* 스크롤바의 길이 */
+    background: #1d3680a8;
+    /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.movie-content::-webkit-scrollbar-track {
+    background: #222A44;
+    /* 스크롤바 뒷 배경 색상 */
+}
+
+.movie-title,
+.movie-content {
+    padding: 10px;
+}
+
+.movie-rating {
+    text-align: right;
+    margin-right: 15px;
+    color: #B5B8BB;
+}
+
+.place-badge {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: gold;
+    padding: 5px;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 20px;
+}
