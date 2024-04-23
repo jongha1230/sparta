@@ -63,12 +63,12 @@ const createMovieRating = (voteAverage) => {
 };
 
 // 1위 ~ 3위 영화 뱃지 생성 함수
-// const createPlaceBadge = (index) => {
-//     const placeBadge = document.createElement('div');
-//     placeBadge.classList.add('place-badge');
-//     placeBadge.textContent = `${index + 1}st`;
-//     return placeBadge;
-// };
+const createPlaceBadge = (index) => {
+    const placeBadge = document.createElement('div');
+    placeBadge.classList.add('place-badge');
+    placeBadge.textContent = `${index + 1}`;
+    return placeBadge;
+};
 
 
 // 영화 카드 생성 함수
@@ -84,19 +84,9 @@ const createMovieCard = (movie, index) => {
     const title = createMovieTitle(movie.title); // 영화 타이틀 요소 생성
     const content = createMovieContent(movie.overview); // 영화 소개 요소 생성
     const rating = createMovieRating(movie.vote_average); // 영화 평점 요소 생성
-    // const placeBadge = createPlaceBadge(index); // 1위 ~ 3위 영화 뱃지 생성
+    const placeBadge = createPlaceBadge(index); // 1위 ~ 3위 영화 뱃지 생성
 
-    movieCard.append(img, title, rating, content);
-    // if (index < 3) {
-    //     movieCard.appendChild(placeBadge);
-    // }
-
-    // // 영화 카드 클릭시 alert창이 뜨는 이벤트리스너
-    // movieCard.addEventListener("click", () => {
-    //     const clickedCardId = movieCard.id;
-    //     window.alert(`ID: ${clickedCardId}`);
-    // });
-
+    movieCard.append(img, title, rating, content, placeBadge);    
     return movieCard;
 };
 
@@ -107,6 +97,32 @@ searchForm.addEventListener("submit", (event) => {
     const inputValue = searchForm.querySelector("input").value;
     filterMovies(inputValue);
 });
+// 영화 카드들을 보이도록 설정하는 함수
+const showMovieCards = () => {
+    const movieCards = document.querySelectorAll(".movie-card");
+    movieCards.forEach(movieCard => {
+        movieCard.style.display = "block";
+    });
+};
+
+window.addEventListener('DOMContentLoaded', () => {
+    // HTML 요소를 DOM으로 가져오기
+    const searchInput = document.getElementById("search-input");
+    // 검색창 클리어 버튼 이벤트 처리 리스너
+    document.getElementById("input-clear-btn").addEventListener("click", () => {
+        searchInput.value = "";
+        showMovieCards();
+    });
+    // 검색어 입력창에 이벤트 리스너 추가
+    searchInput.addEventListener("input", () => {
+        const inputValue = searchInput.value.trim(); // 입력된 검색어
+        if (inputValue.length >= 3) {
+            filterMovies(inputValue);
+        } else {
+            showMovieCards();
+        }
+    });
+});
 
 // 입력값에 해당하는 영화 필터링 함수
 const filterMovies = (inputValue) => {
@@ -116,19 +132,6 @@ const filterMovies = (inputValue) => {
         movieCard.style.display = title.includes(inputValue.toLowerCase()) ? "block" : "none";
     });
 };
-
-// HTML 요소를 DOM으로 가져오기
-const searchInput = document.getElementById("search-input");
-
-// 메인 타이틀 클릭 시 페이지 새로고침 
-document.getElementById("header-title").addEventListener("click", () => {
-    location.reload();    
-});
-
-// 검색창 클리어 버튼 이벤트 처리 리스너
-document.getElementById("input-clear-btn").addEventListener("click", () => {
-    searchInput.value = "";
-});
 
 // 영화 리스트의 부모 요소에 클릭 이벤트 리스너 추가
 document.getElementById("movie-list").addEventListener("click", (event) => {
@@ -154,10 +157,10 @@ const toggleDarkmode = () => {
 window.addEventListener('DOMContentLoaded', () => {
     const darkModeEnabled = localStorage.getItem('darkModeEnabled') === 'true';
     const darkmodeToggle = document.getElementById('dark-mode-toggle');
-    
+
     // 다크 모드 설정이 저장된 경우에만 다크 모드를 활성화하고 체크박스를 업데이트합니다.
     if (darkModeEnabled) {
-        toggleDarkmode(); 
+        toggleDarkmode();
         darkmodeToggle.checked = false;
     } else {
         darkmodeToggle.checked = true;
