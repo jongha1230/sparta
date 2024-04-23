@@ -8,18 +8,39 @@ body {
     color: white;
 }
 
+.dark-mode {
+    background-color: #ffffff;
+    color: #1D1E22;
+}
+
+.dark-mode .movie-card {
+    background-color: #E0E0E0;
+}
+
+.dark-mode .movie-rating {
+    color: black;
+}
+
 a {
     color: inherit;
     text-decoration: none;
 }
 
+/* Header */
+
 input:focus {
     outline: none;
 }
 
-header h1 {
+#header-title-wrap {
     text-align: center;
-    padding: 20px
+}
+
+#header-title {
+    display: inline-block;
+    padding: 20px;
+    margin: 0;
+    cursor: pointer;
 }
 
 #serch {
@@ -75,6 +96,80 @@ header h1 {
     transition-duration: 0.5s;
 }
 
+/* 다크 모드 버튼 */
+.toggle-container {    
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    padding: 20px;    
+}
+.toggle-label {
+    display: flex;
+    align-items: center;
+}
+
+#slider-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+#slider-label #dark-mode-toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* 슬라이더 효과 */
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+#dark-mode-toggle:checked+.slider {
+    background-color: #4b4e50;
+}
+
+#dark-mode-toggle:focus+.slider {
+    box-shadow: 0 0 1px #4b4e50;
+}
+
+#dark-mode-toggle:checked+.slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+/* Main */
 /* 영화 목록 */
 
 #movie-list {
@@ -98,7 +193,6 @@ header h1 {
 
 .movie-card img {
     width: 100%;
-
     border-radius: 16px;
     border: 1px solid #ccc;
 }
@@ -108,25 +202,6 @@ header h1 {
     height: 150px;
 }
 
-/* 스크롤바 막대 */
-
-.movie-content::-webkit-scrollbar {
-    width: 8px;
-    /* 스크롤바의 너비 */
-}
-
-.movie-content::-webkit-scrollbar-thumb {
-    height: 30%;
-    /* 스크롤바의 길이 */
-    background: #1d3680a8;
-    /* 스크롤바의 색상 */
-    border-radius: 10px;
-}
-
-.movie-content::-webkit-scrollbar-track {
-    background: #222A44;
-    /* 스크롤바 뒷 배경 색상 */
-}
 
 .movie-title,
 .movie-content {
@@ -148,4 +223,26 @@ header h1 {
     border-radius: 50%;
     font-weight: bold;
     font-size: 20px;
+}
+
+
+/* 스크롤바 막대 */
+
+.movie-content::-webkit-scrollbar {
+    width: 8px;
+    /* 스크롤바의 너비 */
+    border-radius: 10px;
+}
+
+.movie-content::-webkit-scrollbar-thumb {
+    height: 30%;
+    /* 스크롤바의 길이 */
+    background: #1d3680a8;
+    /* 스크롤바의 색상 */
+    border-radius: 10px;
+}
+
+.movie-content::-webkit-scrollbar-track {
+    background-color: transparent;
+    /* 스크롤바 뒷 배경 색상 */
 }
