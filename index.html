@@ -13,17 +13,18 @@
         <div id="header-title-wrap">
             <h1 id="header-title">The Most Popular Movies🎥</h1>
         </div>
+        <button type="button" id="year-button">연도별 영화 필터링</button>
         <div class="toggle-container">                      
-            <label for="dark-mode-toggle" class="toggle-label">                             
+            <label for="light-mode-toggle" class="toggle-label">                             
                 <span class="toggle-text">어두운 모드</span>                
                 <span id="slider-label">
-                    <input type="checkbox" id="dark-mode-toggle" checked>
+                    <input type="checkbox" id="light-mode-toggle" checked>
                     <span class="slider round"></span>
                 </span>
             </label>            
         </div>
     </header>
-    <main>
+    <main>        
         <section id="serch">
             <form id="serch-form">
                 <input type="text" id="search-input" placeholder="Search movie title" autofocus>
@@ -31,15 +32,26 @@
                 <button type="button" id="input-clear-btn" alt="serch-bar-clear-btn">Clear</button>
             </form>
         </section>
+        <h2 id="movie-list-heading">전체 목록</h2>
         <section id="movie-list">
-            <!-- <div class="movie-card">
-                <img src="" alt="">
-                <div class="movie-rating"></div>
-                <h3 class="movie-title"></h3>
-                <p class="movie-content"></p>                
-            </div> -->
+            <!-- 영화 카드 목록 -->
         </section>
     </main>
+    <!-- 모달창 -->
+    <div id="yearModal" class="modal">
+        <div class="modal-content">
+            <ul class="year-list">
+                <li class="year-item" id="all">All</li>
+                <li class="year-item" id="before1960">Before 1960</li>
+                <li class="year-item" id="1960s">1960s</li>
+                <li class="year-item" id="1970s">1970s</li>
+                <li class="year-item" id="1980s">1980s</li>
+                <li class="year-item" id="1990s">1990s</li>
+                <li class="year-item" id="2000s">2000s</li>
+                <li class="year-item" id="after2010">After 2010</li>
+            </ul>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>

@@ -8,16 +8,20 @@ body {
     color: white;
 }
 
-.dark-mode {
+.light-mode {
     background-color: #ffffff;
     color: #1D1E22;
 }
 
-.dark-mode .movie-card {
+.light-mode .movie-card {
     background-color: #E0E0E0;
 }
 
-.dark-mode .movie-rating {
+.light-mode .movie-card:hover {
+    background-color: #CCCCCC;
+}
+
+.light-mode .movie-rating {
     color: black;
 }
 
@@ -97,20 +101,23 @@ input:focus {
 }
 
 /* 다크 모드 버튼 */
-.toggle-container {    
+.toggle-container {
     position: absolute;
     top: 20px;
     right: 40px;
-    padding: 20px;    
+    padding: 20px;
 }
+
 .toggle-label {
     display: flex;
     align-items: center;
 }
-.toggle-text:hover{
+
+.toggle-text:hover {
     transform: scale(1.2);
     transition-duration: 0.5s;
 }
+
 #slider-label {
     position: relative;
     display: inline-block;
@@ -119,7 +126,7 @@ input:focus {
     margin-left: 10px;
 }
 
-#slider-label #dark-mode-toggle {
+#slider-label #light-mode-toggle {
     opacity: 0;
     width: 0;
     height: 0;
@@ -150,15 +157,15 @@ input:focus {
     transition: .4s;
 }
 
-#dark-mode-toggle:checked+.slider {
+#light-mode-toggle:checked+.slider {
     background-color: #4b4e50;
 }
 
-#dark-mode-toggle:focus+.slider {
+#light-mode-toggle:focus+.slider {
     box-shadow: 0 0 1px #4b4e50;
 }
 
-#dark-mode-toggle:checked+.slider:before {
+#light-mode-toggle:checked+.slider:before {
     -webkit-transform: translateX(26px);
     -ms-transform: translateX(26px);
     transform: translateX(26px);
@@ -194,6 +201,10 @@ input:focus {
     transition: all 0.1s;
 }
 
+.movie-card:hover {
+    background-color: #1A2133;
+}
+
 .movie-card img {
     width: 100%;
     border-radius: 16px;
@@ -222,7 +233,7 @@ input:focus {
     top: 5px;
     left: 5px;
     background-color: rgb(102, 102, 101);
-    padding: 5px;    
+    padding: 5px;
     font-weight: bold;
     font-size: 20px;
     text-align: center;
@@ -250,4 +261,62 @@ input:focus {
 .movie-content::-webkit-scrollbar-track {
     background-color: transparent;
     /* 스크롤바 뒷 배경 색상 */
+}
+
+/* 모달창 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2d2d2d;
+    color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    height: 450px;
+}
+
+.year-list {
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
+    text-align: center;
+}
+
+.year-item {
+    margin: 10px 0;
+    cursor: pointer;
+    width: 100%;
+    padding: 10px;
+    font-weight: 600;
+}
+.year-item:not(:first-child) {
+    border-top: 1px solid gray;
+}
+.year-item:hover {
+    background-color: #363636;
+    color: #fefefe;
+}
+
+.light-mode .year-item:hover {
+    background-color: #f2f2f2;
+    color: #000000;
+}
+
+.light-mode .modal-content {
+    background-color: #fefefe;
+    color: #333;
 }
