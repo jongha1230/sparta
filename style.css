@@ -111,12 +111,11 @@ input:focus {
 }
 
 /* 다크 모드 버튼 */
-.toggle-wrap {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 10px;
+.toggle-wrap {         
+    overflow: hidden;
 }
 .toggle-container {            
+    float: right;
     display: flex;
     padding: 20px;
     width: 200px;    
@@ -385,7 +384,8 @@ input:focus {
 
 @media screen and (max-width: 768px) {    
     body {
-        overflow:hidden
+        overflow-x:hidden;
+        /* overflow-y: scroll; */        
     }
     #movie-list {
         display: grid;
