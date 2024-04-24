@@ -125,6 +125,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById("search-input");
     const headerTitle = document.getElementById("header-title");
     const inputClearBtn = document.getElementById("input-clear-btn");
+    const movieListHeading = document.getElementById("movie-list-heading");
 
     headerTitle.addEventListener("click", pageClear);
     inputClearBtn.addEventListener("click", pageClear);
@@ -133,8 +134,10 @@ window.addEventListener('DOMContentLoaded', () => {
         const inputValue = searchInput.value.trim(); // 입력된 검색어
         if (inputValue.length >= 3) {
             filterMovies(inputValue);
+            movieListHeading.textContent = "Filtered List";
         } else {
             showMovieCards();
+            movieListHeading.textContent = "The Entire List";
         }
     });
 
@@ -142,6 +145,7 @@ window.addEventListener('DOMContentLoaded', () => {
     function pageClear() {
         searchInput.value = "";
         showMovieCards();
+        movieListHeading.textContent = "The Entire List";
     };
 });
 
@@ -191,8 +195,8 @@ window.addEventListener('DOMContentLoaded', () => {
 // 다크 모드 토글 체크박스의 이벤트 리스너
 document.getElementById('light-mode-toggle').addEventListener('change', toggleLightmode);
 
-// "year-button" 클릭 이벤트 리스너 추가
-document.getElementById("year-button").addEventListener("click", function () {
+// "movie-list-header" 클릭 이벤트 리스너 추가
+document.getElementById("movie-list-header").addEventListener("click", function () {
     // 모달 표시
     document.getElementById("yearModal").style.display = "block";
 });
@@ -205,15 +209,17 @@ window.onclick = function (event) {
     }
 }
 // 모달 내 연도 항목 클릭 이벤트 리스너 추가
-document.getElementById("yearModal").addEventListener("click", function(event) {
+document.getElementById("yearModal").addEventListener("click", function (event) {
     const target = event.target;
     if (target.classList.contains("year-item")) {
         const yearId = target.id;
         if (yearId === "all") {
             showMovieCards(); // "All"을 선택한 경우 모든 영화 카드 보이기
+            document.getElementById("movie-list-heading").textContent = "The Entire List"; // 클릭된 항목의 id를 movie-list-heading의 텍스트로 설정
         } else {
             filterMoviesByYear(yearId);
-        }
+            document.getElementById("movie-list-heading").textContent = target.textContent;
+        }       
     }
 });
 // 연도별 영화 필터링 함수

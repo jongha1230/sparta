@@ -3,15 +3,25 @@
     margin: 0;
 }
 
-body {
-    background-color: #1D1E22;
-    color: white;
-}
-
 .light-mode {
     background-color: #ffffff;
     color: #1D1E22;
+    background-image: url(light-mode-background.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
+
+body {
+    color: white;
+    background-image: url(earth-1756274_1280.jpg);
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+
+
 
 .light-mode .movie-card {
     background-color: #E0E0E0;
@@ -49,7 +59,7 @@ input:focus {
 
 #serch {
     position: relative;
-    width: 500px;
+    width: 50%;
     margin: 0 auto;
     margin-bottom: 20px;
 }
@@ -86,7 +96,7 @@ input:focus {
 #input-clear-btn {
     position: absolute;
     border: none;
-    top: 1px;
+    top: 2px;
     right: 65px;
     padding: 10px;
     background-color: transparent;
@@ -101,16 +111,23 @@ input:focus {
 }
 
 /* 다크 모드 버튼 */
-.toggle-container {
-    position: absolute;
-    top: 20px;
-    right: 40px;
+.toggle-wrap {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+.toggle-container {            
+    display: flex;
     padding: 20px;
+    width: 200px;    
 }
 
 .toggle-label {
     display: flex;
     align-items: center;
+}
+.toggle-text {
+    font-weight: 600;    
 }
 
 .toggle-text:hover {
@@ -128,7 +145,7 @@ input:focus {
 
 #slider-label #light-mode-toggle {
     opacity: 0;
-    width: 0;
+    width: 170px;
     height: 0;
 }
 
@@ -180,11 +197,49 @@ input:focus {
 }
 
 /* Main */
+/* 영화 헤더 */
+#movie-list-header {
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+    width: 250px;
+    margin-left: 30px;
+    cursor: pointer;
+}
+
+#movie-list-header:hover {
+    transform: scale(1.05);
+    transition-duration: 0.5s;
+}
+
+#movie-list-heading {
+    padding: 20px;
+    width: 210px;
+}
+
+#year-filter-button {
+    background-image: url('down-dark.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
+    border: none;
+}
+
+.light-mode #year-filter-button {
+    background-image: url('downd.png');
+    width: 40px;
+    height: 40px;
+}
+
+
 /* 영화 목록 */
 
 #movie-list {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     justify-items: center;
 }
 
@@ -241,6 +296,10 @@ input:focus {
     height: 40px;
 }
 
+.light-mode .place-badge {
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+}
 
 /* 스크롤바 막대 */
 
@@ -303,9 +362,11 @@ input:focus {
     padding: 10px;
     font-weight: 600;
 }
+
 .year-item:not(:first-child) {
     border-top: 1px solid gray;
 }
+
 .year-item:hover {
     background-color: #363636;
     color: #fefefe;
@@ -320,3 +381,30 @@ input:focus {
     background-color: #fefefe;
     color: #333;
 }
+
+
+@media screen and (max-width: 768px) {    
+    body {
+        overflow:hidden
+    }
+    #movie-list {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        justify-items: center;
+    }
+    #serch {
+        width: 85%;
+    }
+
+    .light-mode .modal-content {
+        background-color: #fefefe;
+        color: #333;
+    }
+    
+    .modal-content {
+        margin: 15% auto;
+        width: 60%;
+        height: 60%;
+    }
+}
+
