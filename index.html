@@ -10,22 +10,20 @@
 
 <body>
     <header>
-        <div id="header-title-wrap">
-            <h1 id="header-title">The Most Popular Movies🎥</h1>
-        </div>        
+        <h1 id="header-title">The Most Popular Movies🎥</h1>
         <div class="toggle-wrap">
-            <div class="toggle-container">                      
-                <label for="light-mode-toggle" class="toggle-label">                             
-                    <span class="toggle-text">어두운 모드</span>                
+            <div class="toggle-container">
+                <label for="light-mode-toggle" class="toggle-label">
+                    <span class="toggle-text">어두운 모드</span>
                     <span id="slider-label">
                         <input type="checkbox" id="light-mode-toggle" checked>
                         <span class="slider round"></span>
                     </span>
-                </label>            
-            </div>            
+                </label>
+            </div>
         </div>
     </header>
-    <main>        
+    <main>
         <section id="serch">
             <form id="serch-form">
                 <input type="text" id="search-input" placeholder="Search movie title" autofocus>
@@ -33,11 +31,23 @@
                 <button type="button" id="input-clear-btn" alt="serch-bar-clear-btn">Clear</button>
             </form>
         </section>
-        <div id="movie-list-header">
-            <h2 id="movie-list-heading">The Entire List</h2>
-            <button type="button" id="year-filter-button">
-            </button>
+        <div id="movie-header-wrap">
+            <!-- movie-list로 이동 -->
+            <div id="view-movie-cards-wrap">
+                <a href="#movie-list" id="view-movie-cards">
+                    <button type="button">
+                        🗃️ 영화 카드 보기
+                    </button>
+                </a>
+            </div>
+            <div id="movie-list-header">
+                <h2 id="movie-list-heading">The Entire List</h2>
+                <button type="button" id="year-filter-button">
+                </button>
+            </div>
         </div>
+
+
         <section id="movie-list">
             <!-- 영화 카드 목록 -->
         </section>

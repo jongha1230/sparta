@@ -168,22 +168,22 @@ document.getElementById("movie-list").addEventListener("click", (event) => {
     }
 });
 
-// 다크 모드 토글 함수
+// 라이트 모드 토글 함수
 const toggleLightmode = () => {
     const body = document.body;
     const lightModeEnabled = !body.classList.contains('light-mode');
     body.classList.toggle('light-mode');
 
-    // 다크 모드 상태를 localStorage에 저장
+    // 라이트 모드 상태를 localStorage에 저장
     localStorage.setItem('lightModeEnabled', lightModeEnabled);
 };
 
-// 페이지 로드 시 localStorage에서 다크 모드 설정 가져오기
+// 페이지 로드 시 localStorage에서 라이트 모드 설정 가져오기
 window.addEventListener('DOMContentLoaded', () => {
     const lightModeEnabled = localStorage.getItem('lightModeEnabled') === 'true';
     const lightmodeToggle = document.getElementById('light-mode-toggle');
 
-    // 다크 모드 설정이 저장된 경우에만 다크 모드를 활성화하고 체크박스를 업데이트합니다.
+    // 라이트 모드 설정이 저장된 경우에만 다크 모드를 활성화하고 체크박스를 업데이트합니다.
     if (lightModeEnabled) {
         toggleLightmode();
         lightmodeToggle.checked = false;
@@ -192,7 +192,7 @@ window.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-// 다크 모드 토글 체크박스의 이벤트 리스너
+// 라이트 모드 토글 체크박스의 이벤트 리스너
 document.getElementById('light-mode-toggle').addEventListener('change', toggleLightmode);
 
 // "movie-list-header" 클릭 이벤트 리스너 추가
@@ -233,3 +233,4 @@ const filterMoviesByYear = (year) => {
         }
     });
 };
+

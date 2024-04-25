@@ -21,8 +21,6 @@ body {
 }
 
 
-
-
 .light-mode .movie-card {
     background-color: #E0E0E0;
 }
@@ -46,14 +44,12 @@ input:focus {
     outline: none;
 }
 
-#header-title-wrap {
-    text-align: center;
-}
-
 #header-title {
-    display: inline-block;
+    display: block;
+    text-align: center;
+    width: max-content;
     padding: 20px;
-    margin: 0;
+    margin: 0 auto;
     cursor: pointer;
 }
 
@@ -111,41 +107,29 @@ input:focus {
 }
 
 /* 다크 모드 버튼 */
-.toggle-wrap {         
-    overflow: hidden;
-}
-.toggle-container {            
-    float: right;
+.toggle-wrap {
     display: flex;
+    justify-content: flex-end;
+    margin-right: 10px;
+}
+
+.toggle-container {
     padding: 20px;
-    width: 200px;    
+    width: 200px;
 }
 
 .toggle-label {
     display: flex;
     align-items: center;
 }
+
 .toggle-text {
-    font-weight: 600;    
+    font-weight: 600;
 }
 
 .toggle-text:hover {
     transform: scale(1.2);
     transition-duration: 0.5s;
-}
-
-#slider-label {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
-    margin-left: 10px;
-}
-
-#slider-label #light-mode-toggle {
-    opacity: 0;
-    width: 170px;
-    height: 0;
 }
 
 /* 슬라이더 효과 */
@@ -171,6 +155,20 @@ input:focus {
     background-color: white;
     -webkit-transition: .4s;
     transition: .4s;
+}
+
+#slider-label {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-left: 10px;
+}
+
+#slider-label #light-mode-toggle {
+    opacity: 0;
+    width: 0px;
+    height: 0;
 }
 
 #light-mode-toggle:checked+.slider {
@@ -214,7 +212,7 @@ input:focus {
 
 #movie-list-heading {
     padding: 20px;
-    width: 210px;
+    width: max-content;
 }
 
 #year-filter-button {
@@ -233,6 +231,9 @@ input:focus {
     height: 40px;
 }
 
+#view-movie-cards button {
+    display: none;
+}
 
 /* 영화 목록 */
 
@@ -246,7 +247,7 @@ input:focus {
     position: relative;
     width: 20em;
     padding: 10px;
-    height: 720px;
+    height: 45em;
     background-color: #222A44;
     border-radius: 16px;
     margin-top: 30px;
@@ -382,29 +383,69 @@ input:focus {
 }
 
 
-@media screen and (max-width: 768px) {    
-    body {
-        overflow-x:hidden;
-        /* overflow-y: scroll; */        
-    }
-    #movie-list {
-        display: grid;
-        grid-template-columns: repeat(1, 1fr);
-        justify-items: center;
-    }
+@media screen and (max-width: 768px) {
+
+    /* 헤더 */
     #serch {
         width: 85%;
     }
 
+    #header-title {
+        font-size: 24px;
+    }
+
+    #view-movie-cards-wrap {
+        width: 100%;
+        text-align: center;
+    }
+
+    #view-movie-cards button {
+        display: inline;
+        color: white;
+        border-radius: 100px;
+        background-color: transparent;
+        align-items: center;
+        font-size: 18px;
+        padding: 12px 24px 12px 16px;
+        width: 12em;
+        height: 5em;
+        margin-top: 20px;
+        font-weight: 600;
+        box-shadow: hsl(0deg 0% 36.35%) 0px 0px 0px 1px inset;
+        ;
+    }
+
+    .light-mode #view-movie-cards button {
+        border: 1px solid black;
+    }
+
+    /* 영화 카드 */
+    #movie-list {
+        display: flex;
+        overflow-x: auto;
+        overflow-y: hidden;
+    }
+
+    .movie-card {
+        width: 15em;
+        height: 38em;
+        flex: none;
+        margin-left: 4em;
+    }
+
+    #movie-list>.movie-card:last-child {
+        margin-right: 5em;
+    }
+
+
+    /* 모달창 */
     .light-mode .modal-content {
         background-color: #fefefe;
         color: #333;
     }
-    
+
     .modal-content {
-        margin: 15% auto;
         width: 60%;
-        height: 60%;
+        height: 80%;
     }
 }
-
