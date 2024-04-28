@@ -22,8 +22,6 @@
                 </label>
             </div>
         </div>
-    </header>
-    <main>
         <section id="serch">
             <form id="serch-form">
                 <input type="text" id="search-input" placeholder="Search movie title" autofocus>
@@ -31,6 +29,25 @@
                 <button type="button" id="input-clear-btn" alt="serch-bar-clear-btn">Clear</button>
             </form>
         </section>
+    </header>
+    <main>
+        <!-- PC화면 슬라이더 -->
+        <button id="slider-toggle-btn" type="button">슬라이더 숨기기</button>
+        <!-- 슬라이더 표시/숨기기 토글버튼 -->
+
+        
+        <div class="slider-container">
+            <!-- 1위 ~ 10위 슬라이더 -->
+            <ul class="right">
+                <!-- 슬라이드 항목 -->
+                <!-- <div class="slide-item"><img src="https://image.tmdb.org/t/p/w500/kXfqcdQKsToO0OUXHcrrNCHDBzO.jpg" alt="The Shawshank Redemption"></div> -->
+            </ul>
+            <!-- 11위 ~ 20위 슬라이더 -->
+            <ul class="left">
+                <!-- 슬라이드 항목 -->
+            </ul>
+        </div>
+
         <div id="movie-header-wrap">
             <!-- movie-list로 이동 -->
             <div id="view-movie-cards-wrap">
