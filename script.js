@@ -100,8 +100,6 @@ const createMovieCard = (movie, index) => {
         movieCard.classList.add("after2010");
     }
 
-
-
     const img = createMovieImage(`https://image.tmdb.org/t/p/w500${movie.poster_path}`, movie.title);
     const title = createMovieTitle(movie.title); // 영화 타이틀 요소 생성
     const content = createMovieContent(movie.overview); // 영화 소개 요소 생성
@@ -111,6 +109,17 @@ const createMovieCard = (movie, index) => {
     movieCard.append(img, title, rating, content, placeBadge);
     return movieCard;
 };
+// 영화 리스트의 부모 요소에 클릭 이벤트 리스너 추가
+document.getElementById("movie-list").addEventListener("click", (event) => {
+    // 클릭된 요소가 영화 카드 또는 그 자식 요소인 경우에 처리
+    const movieCard = event.target.closest(".movie-card");
+    if (movieCard) {
+        const clickedCardId = movieCard.id;        
+        setTimeout(function() {
+            window.alert(`ID: ${clickedCardId}`);
+        }, 0);
+    }
+});
 
 // 영화 카드들을 보이도록 설정하는 함수
 const showMovieCards = () => {
@@ -119,16 +128,6 @@ const showMovieCards = () => {
         movieCard.style.display = "block";
     });
 };
-
-// 영화 리스트의 부모 요소에 클릭 이벤트 리스너 추가
-document.getElementById("movie-list").addEventListener("click", (event) => {
-    // 클릭된 요소가 영화 카드 또는 그 자식 요소인 경우에 처리
-    const movieCard = event.target.closest(".movie-card");
-    if (movieCard) {
-        const clickedCardId = movieCard.id;
-        window.alert(`ID: ${clickedCardId}`);
-    }
-});
 
 
 // 화면에 슬라이드 표시
@@ -161,7 +160,7 @@ const createSlideItem = (movie) => {
 };
 // 슬라이드 이동 함수
 const moveSlide = (targetEl, direction) => {    
-    const target = document.querySelector(targetEl)
+    const target = document.querySelector(targetEl);
     const firstLi = document.querySelector('li');
     const slideWidth = firstLi.offsetWidth + 16;
     const animation = target.animate([
@@ -225,13 +224,13 @@ const movieListHeading = document.getElementById("movie-list-heading");
 // 검색 이벤트 리스너 
 const searchForm = document.getElementById("serch-form");
 searchForm.addEventListener("submit", (event) => {
-    // event.preventDefault(); // 폼 제출 방지
+    event.preventDefault(); // 폼 제출 방지
     const inputValue = searchForm.querySelector("input").value;
     filterMovies(inputValue);
 });
 // 검색 이벤트 처리
 const handleSearch = (event) => {
-    // event.preventDefault();
+    event.preventDefault();
     const inputValue = searchInput.value.trim(); // 입력된 검색어
     if (inputValue.length >= 3) {
         filterMovies(inputValue);
@@ -255,7 +254,7 @@ const handlePageClear = () => {
     showMovieCards();
     movieListHeading.textContent = "The Entire List";
 };
-// // 페이지 새로고침
+// 페이지 새로고침
 const reloadPage1 = () => {
     window.location.reload();
 };
@@ -290,10 +289,7 @@ const initialize = () => {
         lightmodeToggle.checked = true;
     }
 };
-
-
-// 라이트 모드 토글 체크박스의 이벤트 리스너
-document.getElementById('light-mode-toggle').addEventListener('change', toggleLightmode);
+const modalButton = document.getElementById("movie-list-header");
 
 // "movie-list-header" 클릭 이벤트 리스너 추가
 document.getElementById("movie-list-header").addEventListener("click", function () {
@@ -329,6 +325,7 @@ document.getElementById("yearModal").addEventListener("click", function (event) 
         }
     }
 });
+
 // 연도별 영화 필터링 함수
 const filterMoviesByYear = (year) => {
     const movieCards = document.querySelectorAll(".movie-card");
