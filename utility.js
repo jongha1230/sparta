@@ -11,6 +11,7 @@ const showMovieCards = () => {
 
 // 페이지 초기화
 const handlePageClear = () => {
+    const searchInput = document.getElementById("search-input");
     searchInput.value = "";
     showMovieCards();
     movieListHeading.textContent = "The Entire List";
